@@ -1,0 +1,29 @@
+[
+  {
+    "description": "模拟一个无参数的Get请求！",
+    "request": {
+      "uri": "/getDemo",
+      "method": "get"
+    },
+    "response": {
+      "text": "这是一个无参数的Get请求！"
+    }
+  },
+  {
+    "description": "模拟一个带参数的Get请求！",
+    "request": {
+      "uri": "/getWithParameter",
+      "method": "get",
+      "queries": {
+        "name": "Atu",
+        "age": "24"
+      }
+    },
+    "response": {
+      "json": {
+        "code": 0,
+        "msg": "这是一个带参数的Post请求！"
+      }
+    }
+  }
+]
