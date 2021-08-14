@@ -10,7 +10,7 @@ import com.fjzcit.tms.model.test.ExecuteResult;
 import com.fjzcit.tms.model.test.InterfaceCase;
 import com.fjzcit.tms.model.test.TestData;
 import com.fjzcit.tms.repository.test.IIterationRepository;
-import com.fjzcit.tms.util.HttpClientUtils;
+import com.fjzcit.tms.util.HttpClientUtil;
 import org.hibernate.annotations.Source;
 import org.springframework.stereotype.Service;
 
@@ -99,7 +99,7 @@ public class IterationService {
                             case GET:
                                 // TODO: 拼接参数，参数均为Json格式，需要转化为键值对并与URL拼接
                                 url += conventJsonStringToKeyValue(data.getParameter());
-                                responseText = HttpClientUtils.httpGet(url);
+                                responseText = HttpClientUtil.httpGet(url);
                                 break;
                             case POST:
 
@@ -109,10 +109,10 @@ public class IterationService {
                                 // 判断“content-type”
                                 switch (ContentTypeEnum.getEnum(iCase.getContentType())) {
                                     case FORM:
-                                        responseText = HttpClientUtils.httpPost(url, params, ContentTypeEnum.FORM);
+                                        responseText = HttpClientUtil.httpPost(url, params, ContentTypeEnum.FORM);
                                         break;
                                     case JSON:
-                                        responseText = HttpClientUtils.httpPost(url, params, ContentTypeEnum.JSON);
+                                        responseText = HttpClientUtil.httpPost(url, params, ContentTypeEnum.JSON);
                                         break;
                                     case MULTIPART:
                                         break;

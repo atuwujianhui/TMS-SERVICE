@@ -6,7 +6,7 @@ import com.fjzcit.tms.common.constant.ResponseTypeEnum;
 import com.fjzcit.tms.common.constant.http.ContentTypeEnum;
 import com.fjzcit.tms.common.constant.http.RequestMethodEnum;
 import com.fjzcit.tms.model.test.*;
-import com.fjzcit.tms.util.HttpClientUtils;
+import com.fjzcit.tms.util.HttpClientUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -96,7 +96,7 @@ public class InterfaceService {
                             case GET:
                                 // TODO: 拼接参数，参数均为Json格式，需要转化为键值对并与URL拼接
                                 url += conventJsonStringToKeyValue(data.getParameter());
-                                responseText = HttpClientUtils.httpGet(url);
+                                responseText = HttpClientUtil.httpGet(url);
                                 break;
                             case POST:
 
@@ -106,10 +106,10 @@ public class InterfaceService {
                                 // 判断“content-type”
                                 switch (ContentTypeEnum.getEnum(iCase.getContentType())) {
                                     case FORM:
-                                        responseText = HttpClientUtils.httpPost(url, params, ContentTypeEnum.FORM);
+                                        responseText = HttpClientUtil.httpPost(url, params, ContentTypeEnum.FORM);
                                         break;
                                     case JSON:
-                                        responseText = HttpClientUtils.httpPost(url, params, ContentTypeEnum.JSON);
+                                        responseText = HttpClientUtil.httpPost(url, params, ContentTypeEnum.JSON);
                                         break;
                                     case MULTIPART:
                                         break;

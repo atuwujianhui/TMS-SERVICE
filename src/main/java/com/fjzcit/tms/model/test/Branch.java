@@ -14,8 +14,8 @@ import javax.persistence.*;
 @Data
 @ToString
 @Entity
-@Table(name = "t_branch")
-@org.hibernate.annotations.Table(appliesTo = "t_branch", comment = "分支")
+@Table(name = "TMS_BRANCH")
+@org.hibernate.annotations.Table(appliesTo = "tms_branch", comment = "分支")
 public class Branch {
 
     // 主键id

@@ -71,6 +71,7 @@
             </exclusions>
         </dependency>
 
+
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
@@ -165,6 +166,12 @@
             <version>${json.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
@@ -206,6 +213,29 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- MyBatis Generator 自动生成代码插件 -->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <executions>
+                    <execution>
+                        <id>Generate MyBatis Artifacts</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- 输出详细信息 -->
+                    <verbose>true</verbose>
+                    <!-- 覆盖生成文件 -->
+                    <overwrite>true</overwrite>
+                    <!-- 定义配置文件 -->
+                    <configurationFile>src/main/resources/generator/generator-config.xml</configurationFile>
+                </configuration>
             </plugin>
         </plugins>
     </build>

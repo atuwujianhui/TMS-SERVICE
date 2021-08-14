@@ -13,7 +13,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -32,8 +31,8 @@ import java.util.*;
  *
  * @author Atu
  */
-public class HttpClientUtils {
-    private static Logger logger = LoggerFactory.getLogger(HttpClientUtils.class); // 日志记录
+public class HttpClientUtil {
+    private static Logger logger = LoggerFactory.getLogger(HttpClientUtil.class); // 日志记录
 
     private static RequestConfig requestConfig = null;
 
@@ -213,7 +212,7 @@ public class HttpClientUtils {
     public static void main(String[] args) {
         String url = "http://localhost:6666/postWithJSONParameter";
         JSONObject params = JSONObject.parseObject("{'name': 'Atu', 'age': '24'}");
-        String responseText = HttpClientUtils.httpPost(url, params, ContentTypeEnum.JSON);
+        String responseText = HttpClientUtil.httpPost(url, params, ContentTypeEnum.JSON);
         System.out.println(responseText);
     }
 
