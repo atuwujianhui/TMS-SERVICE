@@ -3,8 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
+
 <mapper namespace="com.fjzcit.tms.mapper.test.InterfaceCaseMapper">
-    <select id="find" parameterType="com.fjzcit.tms.req.InterfaceCaseReq" resultType="com.fjzcit.tms.model.test.InterfaceCase">
+    <resultMap id="interfaceCaseMap" type="com.fjzcit.tms.model.test.InterfaceCase">
+        <!-- id代表实体主键 -->
+        <!-- property对应实体类属性，column是DB字段 -->
+        <id property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="name" column="name"/>
+        <result property="uri" column="uri"/>
+        <result property="interfaceType" column="interface_type"/>
+        <result property="state" column="state"/>
+    </resultMap>
+    <select id="find" parameterType="com.fjzcit.tms.req.InterfaceCaseReq" resultMap="interfaceCaseMap">
         SELECT * FROM TMS_INTERFACE_CASE
     </select>
 </mapper>
