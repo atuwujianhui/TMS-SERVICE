@@ -1,18 +1,25 @@
 [
 	{
-    "description": "列出所有的接口测试用例！",
+    "description": "列出所有的接口测试用例-带JSON参数！",
     "request": {
-      "uri": "/findAllInterfaceCase",
-      "method": "post"
+      "uri": "/interfaceCase/find",
+      "method": "post",
+      "headers": {
+        "content-type": "application/json;charset=UTF-8"
+      },
+      "json": {
+        "currentPage": 1,
+        "pageSize": 2
+      }
     },
     "response": {
-    	"headers":{
-        "Access-Control-Allow-Origin":"*",
-        "Access-Control-Allow-Methods":"*",
-        "Access-Control-Max-Age":"3600",
-        "Access-Control-Allow-Headers":"*",
-        "Access-Control-Allow-Credentials":"true",
-        "Content-Type":"text/html;charset=utf-8"
+    	"headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "*",
+        "Access-Control-Max-Age": "3600",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Credentials": "true",
+        "Content-Type": "text/html;charset=gbk"
       },
       "json": {
       	"code": 0,
@@ -205,6 +212,422 @@
 				  }
 				]
 			}
+    }
+  },
+  {
+    "description": "列出所有的接口测试用例-带FORM参数！",
+    "request": {
+      "uri": "/interfaceCase/find2",
+      "method": "post",
+      "forms": {
+        "currentPage": "1",
+        "pageSize": "2"
+      }
+    },
+    "response": {
+    	"headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "*",
+        "Access-Control-Max-Age": "3600",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Credentials": "true",
+        "Content-Type": "text/html;charset=gbk"
+      },
+      "json": {
+      	"code": 0,
+      	"msg": "查询成功。",
+      	"datas": [
+				  {
+				    "id": 1,
+				    "code": "1",
+				    "name": "无参数的Get请求测试",
+				    "iteration": {
+				      "id": 1,
+				      "name": "迭代01",
+				      "systemId": 1,
+				      "createTime": null,
+				      "remarks": null
+				    },
+				    "system": {
+				      "id": 1,
+				      "code": "1",
+				      "name": "moco-runner",
+				      "url": "http://localhost:6666",
+				      "state": 1,
+				      "creator": 0,
+				      "createTime": "2021-06-20T08:24:02.000+00:00",
+				      "remarks": "mock server"
+				    },
+				    "moduleId": null,
+				    "functionId": null,
+				    "precondition": null,
+				    "interfaceType": 0,
+				    "uri": "/getDemo",
+				    "method": 0,
+				    "isAjax": 0,
+				    "contentType": 0,
+				    "parameter_source": null,
+				    "parameter": null,
+				    "expectedResponseType": 1,
+				    "expectedResponseContent": "{\r\n\t\"code\": 0,\r\n\t\"msg\": \"这是一个无参数的Get请求！\"\r\n}",
+				    "updateCookie": 0,
+				    "state": 1,
+				    "remarks": null
+				  },
+				  {
+				    "id": 2,
+				    "code": "2",
+				    "name": "带参数的Get请求测试",
+				    "iteration": {
+				      "id": 1,
+				      "name": "迭代01",
+				      "systemId": 1,
+				      "createTime": null,
+				      "remarks": null
+				    },
+				    "system": {
+				      "id": 1,
+				      "code": "1",
+				      "name": "moco-runner",
+				      "url": "http://localhost:6666",
+				      "state": 1,
+				      "creator": 0,
+				      "createTime": "2021-06-20T08:24:02.000+00:00",
+				      "remarks": "mock server"
+				    },
+				    "moduleId": null,
+				    "functionId": null,
+				    "precondition": null,
+				    "interfaceType": 0,
+				    "uri": "/getWithParameter",
+				    "method": 0,
+				    "isAjax": 0,
+				    "contentType": 0,
+				    "parameter_source": null,
+				    "parameter": "{\r\n  \"name\": \"Atu\",\r\n  \"age\": \"24\"\r\n}",
+				    "expectedResponseType": 0,
+				    "expectedResponseContent": "这是一个带参数的Get请求！",
+				    "updateCookie": 0,
+				    "state": 1,
+				    "remarks": null
+				  },
+				  {
+				    "id": 3,
+				    "code": "3",
+				    "name": "无参数的Post请求测试",
+				    "iteration": {
+				      "id": 1,
+				      "name": "迭代01",
+				      "systemId": 1,
+				      "createTime": null,
+				      "remarks": null
+				    },
+				    "system": {
+				      "id": 1,
+				      "code": "1",
+				      "name": "moco-runner",
+				      "url": "http://localhost:6666",
+				      "state": 1,
+				      "creator": 0,
+				      "createTime": "2021-06-20T08:24:02.000+00:00",
+				      "remarks": "mock server"
+				    },
+				    "moduleId": null,
+				    "functionId": null,
+				    "precondition": null,
+				    "interfaceType": 0,
+				    "uri": "/postDemo",
+				    "method": 1,
+				    "isAjax": 0,
+				    "contentType": 0,
+				    "parameter_source": null,
+				    "parameter": null,
+				    "expectedResponseType": 0,
+				    "expectedResponseContent": "这是一个无参数的Post请求！",
+				    "updateCookie": 0,
+				    "state": 1,
+				    "remarks": null
+				  },
+				  {
+				    "id": 4,
+				    "code": "4",
+				    "name": "带Form参数的Post请求测试",
+				    "iteration": {
+				      "id": 1,
+				      "name": "迭代01",
+				      "systemId": 1,
+				      "createTime": null,
+				      "remarks": null
+				    },
+				    "system": {
+				      "id": 1,
+				      "code": "1",
+				      "name": "moco-runner",
+				      "url": "http://localhost:6666",
+				      "state": 1,
+				      "creator": 0,
+				      "createTime": "2021-06-20T08:24:02.000+00:00",
+				      "remarks": "mock server"
+				    },
+				    "moduleId": null,
+				    "functionId": null,
+				    "precondition": null,
+				    "interfaceType": 0,
+				    "uri": "/postWithParameter",
+				    "method": 1,
+				    "isAjax": 0,
+				    "contentType": 0,
+				    "parameter_source": null,
+				    "parameter": "{\r\n  \"name\": \"Atu\",\r\n  \"age\": \"24\"\r\n}",
+				    "expectedResponseType": 1,
+				    "expectedResponseContent": "{\r\n\t\"code\": 0,\r\n\t\"msg\": \"模拟一个带表单参数的Post请求！\"\r\n}",
+				    "updateCookie": 0,
+				    "state": 1,
+				    "remarks": null
+				  },
+				  {
+				    "id": 5,
+				    "code": "5",
+				    "name": "带JSON参数的Post请求",
+				    "iteration": {
+				      "id": 1,
+				      "name": "迭代01",
+				      "systemId": 1,
+				      "createTime": null,
+				      "remarks": null
+				    },
+				    "system": {
+				      "id": 1,
+				      "code": "1",
+				      "name": "moco-runner",
+				      "url": "http://localhost:6666",
+				      "state": 1,
+				      "creator": 0,
+				      "createTime": "2021-06-20T08:24:02.000+00:00",
+				      "remarks": "mock server"
+				    },
+				    "moduleId": null,
+				    "functionId": null,
+				    "precondition": null,
+				    "interfaceType": 0,
+				    "uri": "/postWithJSONParameter",
+				    "method": 1,
+				    "isAjax": 0,
+				    "contentType": 1,
+				    "parameter_source": null,
+				    "parameter": "{\r\n  \"name\": \"Atu\",\r\n  \"age\": \"24\"\r\n}",
+				    "expectedResponseType": 1,
+				    "expectedResponseContent": "{\r\n  \"code\": 0,\r\n  \"msg\": \"模拟一个带JSON参数的Post请求！\"\r\n}",
+				    "updateCookie": 0,
+				    "state": 1,
+				    "remarks": null
+				  }
+				]
+			}
+    }
+  },
+  {
+    "description": "列出所有的接口测试用例！",
+    "request": {
+      "uri": "/interfaceCase/find3",
+      "method": "post"
+    },
+    "response": {
+    	"headers":{
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "*",
+        "Access-Control-Max-Age": "3600",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Credentials": "true",
+        "Content-Type": "text/html;charset=gbk"
+      },
+      "json": [
+			  {
+			    "id": 1,
+			    "code": "1",
+			    "name": "无参数的Get请求测试",
+			    "iteration": {
+			      "id": 1,
+			      "name": "迭代01",
+			      "systemId": 1,
+			      "createTime": null,
+			      "remarks": null
+			    },
+			    "system": {
+			      "id": 1,
+			      "code": "1",
+			      "name": "moco-runner",
+			      "url": "http://localhost:6666",
+			      "state": 1,
+			      "creator": 0,
+			      "createTime": "2021-06-20T08:24:02.000+00:00",
+			      "remarks": "mock server"
+			    },
+			    "moduleId": null,
+			    "functionId": null,
+			    "precondition": null,
+			    "interfaceType": 0,
+			    "uri": "/getDemo",
+			    "method": 0,
+			    "isAjax": 0,
+			    "contentType": 0,
+			    "parameter_source": null,
+			    "parameter": null,
+			    "expectedResponseType": 1,
+			    "expectedResponseContent": "{\r\n\t\"code\": 0,\r\n\t\"msg\": \"这是一个无参数的Get请求！\"\r\n}",
+			    "updateCookie": 0,
+			    "state": 1,
+			    "remarks": null
+			  },
+			  {
+			    "id": 2,
+			    "code": "2",
+			    "name": "带参数的Get请求测试",
+			    "iteration": {
+			      "id": 1,
+			      "name": "迭代01",
+			      "systemId": 1,
+			      "createTime": null,
+			      "remarks": null
+			    },
+			    "system": {
+			      "id": 1,
+			      "code": "1",
+			      "name": "moco-runner",
+			      "url": "http://localhost:6666",
+			      "state": 1,
+			      "creator": 0,
+			      "createTime": "2021-06-20T08:24:02.000+00:00",
+			      "remarks": "mock server"
+			    },
+			    "moduleId": null,
+			    "functionId": null,
+			    "precondition": null,
+			    "interfaceType": 0,
+			    "uri": "/getWithParameter",
+			    "method": 0,
+			    "isAjax": 0,
+			    "contentType": 0,
+			    "parameter_source": null,
+			    "parameter": "{\r\n  \"name\": \"Atu\",\r\n  \"age\": \"24\"\r\n}",
+			    "expectedResponseType": 0,
+			    "expectedResponseContent": "这是一个带参数的Get请求！",
+			    "updateCookie": 0,
+			    "state": 1,
+			    "remarks": null
+			  },
+			  {
+			    "id": 3,
+			    "code": "3",
+			    "name": "无参数的Post请求测试",
+			    "iteration": {
+			      "id": 1,
+			      "name": "迭代01",
+			      "systemId": 1,
+			      "createTime": null,
+			      "remarks": null
+			    },
+			    "system": {
+			      "id": 1,
+			      "code": "1",
+			      "name": "moco-runner",
+			      "url": "http://localhost:6666",
+			      "state": 1,
+			      "creator": 0,
+			      "createTime": "2021-06-20T08:24:02.000+00:00",
+			      "remarks": "mock server"
+			    },
+			    "moduleId": null,
+			    "functionId": null,
+			    "precondition": null,
+			    "interfaceType": 0,
+			    "uri": "/postDemo",
+			    "method": 1,
+			    "isAjax": 0,
+			    "contentType": 0,
+			    "parameter_source": null,
+			    "parameter": null,
+			    "expectedResponseType": 0,
+			    "expectedResponseContent": "这是一个无参数的Post请求！",
+			    "updateCookie": 0,
+			    "state": 1,
+			    "remarks": null
+			  },
+			  {
+			    "id": 4,
+			    "code": "4",
+			    "name": "带Form参数的Post请求测试",
+			    "iteration": {
+			      "id": 1,
+			      "name": "迭代01",
+			      "systemId": 1,
+			      "createTime": null,
+			      "remarks": null
+			    },
+			    "system": {
+			      "id": 1,
+			      "code": "1",
+			      "name": "moco-runner",
+			      "url": "http://localhost:6666",
+			      "state": 1,
+			      "creator": 0,
+			      "createTime": "2021-06-20T08:24:02.000+00:00",
+			      "remarks": "mock server"
+			    },
+			    "moduleId": null,
+			    "functionId": null,
+			    "precondition": null,
+			    "interfaceType": 0,
+			    "uri": "/postWithParameter",
+			    "method": 1,
+			    "isAjax": 0,
+			    "contentType": 0,
+			    "parameter_source": null,
+			    "parameter": "{\r\n  \"name\": \"Atu\",\r\n  \"age\": \"24\"\r\n}",
+			    "expectedResponseType": 1,
+			    "expectedResponseContent": "{\r\n\t\"code\": 0,\r\n\t\"msg\": \"模拟一个带表单参数的Post请求！\"\r\n}",
+			    "updateCookie": 0,
+			    "state": 1,
+			    "remarks": null
+			  },
+			  {
+			    "id": 5,
+			    "code": "5",
+			    "name": "带JSON参数的Post请求",
+			    "iteration": {
+			      "id": 1,
+			      "name": "迭代01",
+			      "systemId": 1,
+			      "createTime": null,
+			      "remarks": null
+			    },
+			    "system": {
+			      "id": 1,
+			      "code": "1",
+			      "name": "moco-runner",
+			      "url": "http://localhost:6666",
+			      "state": 1,
+			      "creator": 0,
+			      "createTime": "2021-06-20T08:24:02.000+00:00",
+			      "remarks": "mock server"
+			    },
+			    "moduleId": null,
+			    "functionId": null,
+			    "precondition": null,
+			    "interfaceType": 0,
+			    "uri": "/postWithJSONParameter",
+			    "method": 1,
+			    "isAjax": 0,
+			    "contentType": 1,
+			    "parameter_source": null,
+			    "parameter": "{\r\n  \"name\": \"Atu\",\r\n  \"age\": \"24\"\r\n}",
+			    "expectedResponseType": 1,
+			    "expectedResponseContent": "{\r\n  \"code\": 0,\r\n  \"msg\": \"模拟一个带JSON参数的Post请求！\"\r\n}",
+			    "updateCookie": 0,
+			    "state": 1,
+			    "remarks": null
+			  }
+			]
     }
   }
 ]

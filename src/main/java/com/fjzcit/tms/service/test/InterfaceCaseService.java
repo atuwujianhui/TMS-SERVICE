@@ -1,19 +1,62 @@
 package com.fjzcit.tms.service.test;
 
+import com.fjzcit.tms.mapper.test.InterfaceCaseMapper;
 import com.fjzcit.tms.model.test.InterfaceCase;
 import com.fjzcit.tms.repository.test.IInterfaceCaseRepository;
+import com.fjzcit.tms.req.InterfaceCaseReq;
+import com.fjzcit.tms.resp.PageResp;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
 public class InterfaceCaseService {
 
+    private static final Logger LOG = LoggerFactory.getLogger(InterfaceCase.class);
+
     @Resource
     IInterfaceCaseRepository interfaceCaseRepository;
 
+    @Resource
+    InterfaceCaseMapper interfaceCaseMapper;
+
+    /**
+     * 查询接口测试用例（带分页）
+     * @param interfaceCaseReq
+     * @return
+     */
+    public PageResp<InterfaceCase> find(InterfaceCaseReq interfaceCaseReq) {
+        // 取得分页信息
+        InterfaceCaseReq icReq = Optional.ofNullable(interfaceCaseReq).orElse(new InterfaceCaseReq());
+        Integer current = icReq.getCurrent();
+        Integer pageSize = icReq.getPageSize();
+
+        // 只对第一个SQL起作用，所以需要尽量放在最终查询的上方，另外，兼顾不分页的情况
+        if (!StringUtils.isEmpty(current) && !StringUtils.isEmpty(pageSize)) {
+            PageHelper.startPage(current, pageSize);
+        }
+        // 查询接口测试用例
+        List<InterfaceCase> list = interfaceCaseMapper.find(interfaceCaseReq);
+
+        PageInfo<InterfaceCase> pageInfo = new PageInfo<>(list);
+        LOG.info("总行数：{}", pageInfo.getTotal());
+        // LOG.info("总页数：{}", pageInfo.getPages());
+
+        // 返回分页对象
+        PageResp<InterfaceCase> pageResp = new PageResp();
+        pageResp.setTotal(pageInfo.getTotal());
+        pageResp.setList(list);
+        return pageResp;
+    }
     /**
      * 查询所有用例
      *
@@ -41,5 +84,17 @@ public class InterfaceCaseService {
     public List<InterfaceCase> findByIterationId(Integer iterationId) {
 //        return this.interfaceCaseRepository.findByIterationIdId(iterationId);
         return this.interfaceCaseRepository.findByIteration_idAndState(iterationId, 1);
+    }
+
+    public static void main(String[] args) {
+        // int i = 0;
+        // Integer j = null;
+        // System.out.println(StringUtils.isEmpty(i));
+        // System.out.println(StringUtils.isEmpty(j));
+        Integer a = new Integer(1);
+        Integer b = new Integer(1);
+        Integer c = -128;
+        Integer d = -128;
+        System.out.println(c == d);
     }
 }

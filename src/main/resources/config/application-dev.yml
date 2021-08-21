@@ -53,7 +53,15 @@ mybatis:
   mapper-locations: classpath:/mapper/**/*.xml
   # 指定Mybatis的实体目录
   type-aliases-package: com.fjzcit.tms.mapper
+  # 在控制台打印sql
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 # 自定义配置项
 customize:
   test: I am Groot
+
+# 指定mapper文件所在的包，此方法为修改日志的级别。
+#logging:
+#  level:
+#    com.fjzcit.tms.mapper: trace
