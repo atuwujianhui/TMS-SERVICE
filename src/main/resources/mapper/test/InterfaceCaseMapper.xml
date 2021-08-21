@@ -16,6 +16,12 @@
         <result property="interfaceType" column="interface_type"/>
         <result property="state" column="state"/>
     </resultMap>
+    <insert id="insert">
+
+    </insert>
+    <update id="save">
+        UPDATE TMS_INTERFACE_CASE SET INTERFACE_TYPE = 0, STATE = 1
+    </update>
     <select id="find" parameterType="com.fjzcit.tms.req.InterfaceCaseReq" resultMap="interfaceCaseMap">
         SELECT * FROM TMS_INTERFACE_CASE
     </select>

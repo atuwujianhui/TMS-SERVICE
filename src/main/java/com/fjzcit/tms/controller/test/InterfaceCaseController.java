@@ -41,6 +41,14 @@ public class InterfaceCaseController {
         return resp;
     }
 
+    @PostMapping(value = "/save")
+    public Object save(@RequestBody InterfaceCase interfaceCase) {
+        CommonResp resp = new CommonResp<>();
+        this.interfaceCaseSvc.save(interfaceCase);
+        return resp;
+    }
+
+
     @RequestMapping(value = "/execute/{iterationId}", method = RequestMethod.GET)
     @ApiOperation(value = "执行接口测试用例！", httpMethod = "GET")
     public Object executeCase(@PathVariable("iterationId") String iterationId) {

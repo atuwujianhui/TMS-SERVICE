@@ -10,6 +10,7 @@ import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
@@ -57,6 +58,21 @@ public class InterfaceCaseService {
         pageResp.setList(list);
         return pageResp;
     }
+
+    /**
+     * 新增或保存
+     * @param interfaceCase
+     */
+    public void save(InterfaceCase interfaceCase) {
+        // ID值存在为保存，不存在则新增
+        if(ObjectUtils.isEmpty(interfaceCase.getId())) {
+            // this.interfaceCaseMapper.insert(interfaceCase);
+        } else {
+            this.interfaceCaseMapper.save(interfaceCase);
+        }
+
+    }
+
     /**
      * 查询所有用例
      *

@@ -8,4 +8,8 @@ import java.util.List;
 public interface InterfaceCaseMapper {
 
     List<InterfaceCase> find(InterfaceCaseReq interfaceCaseReq);
+    
+    void save(InterfaceCase interfaceCase);
+
+    void insert(InterfaceCase interfaceCase);
 }
