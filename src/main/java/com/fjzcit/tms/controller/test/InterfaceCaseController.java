@@ -24,14 +24,21 @@ public class InterfaceCaseController {
     @Resource
     InterfaceCaseService interfaceCaseSvc;
 
-    // 查询所有的接口测试用例
+    /**
+     * 查询所有的接口测试用例
+     * @return
+     */
     @PostMapping(value = "/findAll")
     @ApiOperation(value = "列出所有接口测试用例！", httpMethod = "POST")
     public Object findAll() {
         return this.interfaceCaseSvc.findAll();
     }
 
-    // 查询接口测试用例
+    /**
+     * 查询接口测试用例
+     * @param interfaceCaseReq
+     * @return
+     */
     @PostMapping(value = "/find")
     @ApiOperation(value = "列出所有接口测试用例！", httpMethod = "POST")
     public Object find(@RequestBody InterfaceCaseReq interfaceCaseReq) {
@@ -41,6 +48,11 @@ public class InterfaceCaseController {
         return resp;
     }
 
+    /**
+     * 保存接口测试用例
+     * @param interfaceCase
+     * @return
+     */
     @PostMapping(value = "/save")
     public Object save(@RequestBody InterfaceCase interfaceCase) {
         CommonResp resp = new CommonResp<>();
@@ -48,6 +60,17 @@ public class InterfaceCaseController {
         return resp;
     }
 
+    /**
+     * 删除接口测试用例
+     * @param id
+     * @return
+     */
+    @DeleteMapping(value = "/delete/{id}")
+    public Object delete(@PathVariable("id") Long id) {
+        CommonResp resp = new CommonResp<>();
+        this.interfaceCaseSvc.delete(id);
+        return resp;
+    }
 
     @RequestMapping(value = "/execute/{iterationId}", method = RequestMethod.GET)
     @ApiOperation(value = "执行接口测试用例！", httpMethod = "GET")

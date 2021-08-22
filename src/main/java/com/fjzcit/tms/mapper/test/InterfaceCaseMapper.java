@@ -10,7 +10,7 @@ public interface InterfaceCaseMapper {
 
     int deleteByExample(InterfaceCaseExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(InterfaceCase record);
 
@@ -18,7 +18,7 @@ public interface InterfaceCaseMapper {
 
     List<InterfaceCase> selectByExample(InterfaceCaseExample example);
 
-    InterfaceCase selectByPrimaryKey(Integer id);
+    InterfaceCase selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") InterfaceCase record, @Param("example") InterfaceCaseExample example);
 

@@ -76,7 +76,13 @@ public class InterfaceCaseService {
         } else {
             this.interfaceCaseMapper.updateByPrimaryKeySelective(interfaceCase);
         }
+    }
 
+    /**
+     * 删除接口测试用例
+     */
+    public void delete(Long id) {
+        this.interfaceCaseMapper.deleteByPrimaryKey(id);
     }
 
     /**
