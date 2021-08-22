@@ -15,7 +15,7 @@ public interface ITestDataRepository extends JpaRepository<TestData, Integer> {
      * @return
      */
     @Query("select d from TestData d, TestCaseRefData drc where d.id = drc.dataId and drc.caseId = :caseId")
-    List<TestData> findByCaseId(@Param("caseId") Integer caseId);
+    List<TestData> findByCaseId(@Param("caseId") Long caseId);
 
     /**
      * TODO: 根据迭代查找所有用例的数据

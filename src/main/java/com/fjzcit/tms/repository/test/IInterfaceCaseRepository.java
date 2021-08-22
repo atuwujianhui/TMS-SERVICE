@@ -9,10 +9,10 @@ import java.util.List;
 
 public interface IInterfaceCaseRepository extends JpaRepository<InterfaceCase, Integer> {
 
-    @Query("select t from InterfaceCase t where t.iteration.id = :iterationId " +
+    @Query("select t from InterfaceCase t where t.iterationId = :iterationId " +
             " AND t.state = 1 ")
     List<InterfaceCase> findByIterationIdId(@Param("iterationId") Integer iterationId);
 
-    List<InterfaceCase> findByIteration_idAndState(Integer iterationId, Integer state);
+    List<InterfaceCase> findByIterationIdAndState(Integer iterationId, Integer state);
 
 }

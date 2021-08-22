@@ -172,11 +172,11 @@
             <version>${json.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-            <version>1.4.0</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--    <groupId>org.mybatis.generator</groupId>-->
+        <!--    <artifactId>mybatis-generator-core</artifactId>-->
+        <!--    <version>1.4.0</version>-->
+        <!--</dependency>-->
 
     </dependencies>
 
@@ -242,6 +242,13 @@
                     <!-- 定义配置文件 -->
                     <configurationFile>src/main/resources/generator/generator-config.xml</configurationFile>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.22</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

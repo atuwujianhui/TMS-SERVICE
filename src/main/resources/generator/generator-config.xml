@@ -32,11 +32,11 @@
         <javaModelGenerator targetProject="src\main\java"
                             targetPackage="com.fjzcit.tms.model"/>
 
-        <!-- mapper xml的位置 -->
+        <!-- mapper.xml的位置 -->
         <sqlMapGenerator targetProject="src\main\resources"
                          targetPackage="mapper"/>
 
-        <!-- mapper类的位置 -->
+        <!-- mapper.java的位置 -->
         <javaClientGenerator targetProject="src\main\java"
                              targetPackage="com.fjzcit.tms.mapper"
                              type="XMLMAPPER"/>
@@ -47,6 +47,9 @@
         <!--<table tableName="doc"/>-->
         <!--<table tableName="content"/>-->
         <!--<table tableName="user"/>-->
-        <table tableName="sys_user"/>
+        <table schema="TMS" tableName="TMS_INTERFACE_CASE">
+            <!--移除生成的文件名的前缀-->
+            <domainObjectRenamingRule searchString="^Tms" replaceString="" />
+        </table>
     </context>
 </generatorConfiguration>

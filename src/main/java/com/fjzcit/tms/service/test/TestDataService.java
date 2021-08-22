@@ -17,7 +17,7 @@ public class TestDataService {
      * @param caseId
      * @return
      */
-    public List<TestData> findByCaseId(Integer caseId) {
+    public List<TestData> findByCaseId(Long caseId) {
         return this.dataRepository.findByCaseId(caseId);
     }
 }

@@ -68,15 +68,15 @@ public class IterationService {
             // 用例执行结果
             ExecuteResult result = new ExecuteResult();
             result.setBatchId(batchId); // 当前执行批次
-            result.setSystemId(iCase.getSystem().getId());
-            result.setIterationId(iCase.getIteration().getId());    // 迭代/增量ID
+            result.setSystemId(iCase.getSystemId());
+            result.setIterationId(iCase.getIterationId());    // 迭代/增量ID
             result.setCaseId(iCase.getId());    // 用例ID
             result.setBizType(1);   // 业务类型，待确认
             // 定义结果类型，暂时假定都返回JSONObject类型
             JSONObject responseResult = new JSONObject();
             String responseText = null;
             // 拼装接口地址
-            String url = iCase.getSystem().getUrl() + iCase.getUri();
+            String url = iCase.getUri();
             // 获取接口的参数数据（TODO: 仅供测试，待优化，不宜在循环中读取参数）
             System.out.println(iCase.getId());
             List<TestData> dataList = this.dataSvc.findByCaseId(iCase.getId());

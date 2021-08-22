@@ -2,9 +2,11 @@ package com.fjzcit.tms.service.test;
 
 import com.fjzcit.tms.mapper.test.InterfaceCaseMapper;
 import com.fjzcit.tms.model.test.InterfaceCase;
+import com.fjzcit.tms.model.test.InterfaceCaseExample;
 import com.fjzcit.tms.repository.test.IInterfaceCaseRepository;
 import com.fjzcit.tms.req.InterfaceCaseReq;
 import com.fjzcit.tms.resp.PageResp;
+import com.fjzcit.tms.util.SnowFlake;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
@@ -30,6 +32,9 @@ public class InterfaceCaseService {
     @Resource
     InterfaceCaseMapper interfaceCaseMapper;
 
+    @Resource
+    SnowFlake snowFlake;
+
     /**
      * 查询接口测试用例（带分页）
      * @param interfaceCaseReq
@@ -46,11 +51,11 @@ public class InterfaceCaseService {
             PageHelper.startPage(current, pageSize);
         }
         // 查询接口测试用例
-        List<InterfaceCase> list = interfaceCaseMapper.find(interfaceCaseReq);
+        InterfaceCaseExample interfaceCaseExample = new InterfaceCaseExample();
+        List<InterfaceCase> list = interfaceCaseMapper.selectByExample(interfaceCaseExample);
 
         PageInfo<InterfaceCase> pageInfo = new PageInfo<>(list);
         LOG.info("总行数：{}", pageInfo.getTotal());
-        // LOG.info("总页数：{}", pageInfo.getPages());
 
         // 返回分页对象
         PageResp<InterfaceCase> pageResp = new PageResp();
@@ -66,9 +71,10 @@ public class InterfaceCaseService {
     public void save(InterfaceCase interfaceCase) {
         // ID值存在为保存，不存在则新增
         if(ObjectUtils.isEmpty(interfaceCase.getId())) {
-            // this.interfaceCaseMapper.insert(interfaceCase);
+            interfaceCase.setId(snowFlake.nextId());
+            this.interfaceCaseMapper.insert(interfaceCase);
         } else {
-            this.interfaceCaseMapper.save(interfaceCase);
+            this.interfaceCaseMapper.updateByPrimaryKeySelective(interfaceCase);
         }
 
     }
@@ -99,7 +105,7 @@ public class InterfaceCaseService {
      */
     public List<InterfaceCase> findByIterationId(Integer iterationId) {
 //        return this.interfaceCaseRepository.findByIterationIdId(iterationId);
-        return this.interfaceCaseRepository.findByIteration_idAndState(iterationId, 1);
+        return this.interfaceCaseRepository.findByIterationIdAndState(iterationId, 1);
     }
 
     public static void main(String[] args) {

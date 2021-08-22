@@ -56,7 +56,7 @@ public class ExecuteResult {
             nullable = false,
             columnDefinition = "INT COMMENT '用例ID，包括功能测试和接口测试'"
     )
-    private Integer caseId;
+    private Long caseId;
 
     // 预期响应结果类型
     @Column(name = "EXPECTED_RESPONSE_TYPE",
