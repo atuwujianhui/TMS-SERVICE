@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.Map;
 
 @RequestMapping(value = "/interfaceCase")
@@ -41,7 +42,7 @@ public class InterfaceCaseController {
      */
     @PostMapping(value = "/find")
     @ApiOperation(value = "列出所有接口测试用例！", httpMethod = "POST")
-    public Object find(@RequestBody InterfaceCaseReq interfaceCaseReq) {
+    public Object find(@RequestBody @Valid InterfaceCaseReq interfaceCaseReq) {
         CommonResp<PageResp<InterfaceCase>> resp = new CommonResp<>();
         PageResp<InterfaceCase> list = this.interfaceCaseSvc.find(interfaceCaseReq);
         resp.setContent(list);
@@ -54,7 +55,7 @@ public class InterfaceCaseController {
      * @return
      */
     @PostMapping(value = "/save")
-    public Object save(@RequestBody InterfaceCase interfaceCase) {
+    public Object save(@RequestBody @Valid InterfaceCase interfaceCase) {
         CommonResp resp = new CommonResp<>();
         this.interfaceCaseSvc.save(interfaceCase);
         return resp;

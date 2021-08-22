@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * 接口测试用例
@@ -27,11 +28,13 @@ public class InterfaceCase {
     // 编号
     @Column(name = "CODE",
             columnDefinition = "VARCHAR(64) COMMENT '编号'")
+    @NotNull(message = "用例编号不能为空")
     private String code;
 
     // 名称
     @Column(name = "NAME",
             columnDefinition = "VARCHAR(128) COMMENT '名称'")
+    @NotNull(message = "用例名称不能为空")
     private String name;
 
     // 所属迭代/增量
