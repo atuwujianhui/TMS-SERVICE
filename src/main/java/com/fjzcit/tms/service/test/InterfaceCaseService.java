@@ -50,6 +50,11 @@ public class InterfaceCaseService {
         }
         // 查询接口测试用例
         InterfaceCaseExample interfaceCaseExample = new InterfaceCaseExample();
+        InterfaceCaseExample.Criteria criteria = interfaceCaseExample.createCriteria();
+        if (!ObjectUtils.isEmpty(interfaceCaseReq.getName())) {
+            // criteria.andNameEqualTo(interfaceCaseReq.getName());
+            criteria.andNameLike("%" + interfaceCaseReq.getName() + "%");
+        }
         List<InterfaceCase> list = interfaceCaseMapper.selectByExample(interfaceCaseExample);
 
         PageInfo<InterfaceCase> pageInfo = new PageInfo<>(list);
