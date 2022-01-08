@@ -8,21 +8,27 @@ import javax.persistence.*;
 @Data
 @ToString
 @Entity
-@Table(name="sys_user")
+@Table(name="sys_user",
+        uniqueConstraints = {
+            @UniqueConstraint(columnNames="name"),
+            @UniqueConstraint(columnNames="login_name")
+        }
+)
 public class User {
 
     @Id	//主键id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)//主键生成策略
-    @Column(name="id")//数据库字段名
+    // @GeneratedValue(strategy=GenerationType.IDENTITY)//主键生成策略
+    @Column(name = "ID",
+            columnDefinition = "BIGINT COMMENT 'ID'")
     private Integer id;
 
     @Column(name="name")
     private String name;
 
-    @Column(name="age")
-    private Integer age;
+    @Column(name="login_name")
+    private Integer loginName;
 
-    @Column(name="address")
-    private String address;
+    @Column(name="password")
+    private String password;
 
 }

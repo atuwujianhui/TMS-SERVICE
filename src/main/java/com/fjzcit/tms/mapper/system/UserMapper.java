@@ -1,44 +1,30 @@
 package com.fjzcit.tms.mapper.system;
 
 import com.fjzcit.tms.model.system.User;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-
+import com.fjzcit.tms.model.system.UserExample;
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
+    long countByExample(UserExample example);
 
-    /**
-     * 通过全注解的方式来写SQL，不写XML文件
-     * @return
-     */
-    @Select("select * from sys_user")
-    List<User> findAll();
+    int deleteByExample(UserExample example);
 
-    /**
-     * “@Results”注解示例
-     * @param id
-     * @return
-     */
-    @Results({
-            @Result(property = "id", column = "a"),
-            @Result(property = "name", column = "b"),
-            @Result(property = "age", column = "c"),
-            @Result(property = "address", column = "d")
-    })
-    @Select("select id a, name b, age c, address d from sys_user where id = #{id}")
-    User findById(Long id);
+    int deleteByPrimaryKey(Long id);
 
-    /**
-     * 通过XML配置的方式
-     * @return
-     */
-    Integer getUserCount();
+    int insert(User record);
 
-    Integer addUser(User user);
+    int insertSelective(User record);
 
-    Integer updateUserById(User user);
+    List<User> selectByExample(UserExample example);
 
-    Integer deleteUserById(Integer id);
+    User selectByPrimaryKey(Long id);
+
+    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
+
+    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 }

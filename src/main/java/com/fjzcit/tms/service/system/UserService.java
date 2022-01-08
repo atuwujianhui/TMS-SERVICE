@@ -16,11 +16,11 @@ public class UserService {
     UserMapper userMapper;
 
     public Object findAll() {
-        return this.userMapper.findAll();
+        return this.userMapper.selectByExample(null);
     }
 
     public Object findById(Long id) {
-        return this.userMapper.findById(id);
+        return this.userMapper.selectByPrimaryKey(id);
     }
 
     /**
@@ -38,7 +38,7 @@ public class UserService {
      * @return
      */
     public Object saveByMyBatis(User user) {
-        return this.userMapper.addUser(user);
+        return this.userMapper.insert(user);
     }
 
     public void deleteById(int id) {

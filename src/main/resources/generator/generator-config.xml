@@ -26,6 +26,8 @@
                         connectionURL="jdbc:mysql://localhost:3306/tms?serverTimezone=GMT%2B8&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
                         userId="root"
                         password="root">
+            <!--不添加该属性，会寻找所有数据库中的同名表，而且设置“schema”属性无效-->
+            <property name="nullCatalogMeansCurrent" value="true" />
         </jdbcConnection>
 
         <!-- domain类的位置 -->
@@ -47,9 +49,13 @@
         <!--<table tableName="doc"/>-->
         <!--<table tableName="content"/>-->
         <!--<table tableName="user"/>-->
-        <table schema="TMS" tableName="TMS_INTERFACE_CASE">
+        <!--<table schema="TMS" tableName="TMS_INTERFACE_CASE">-->
+        <!--    &lt;!&ndash;移除生成的文件名的前缀&ndash;&gt;-->
+        <!--    <domainObjectRenamingRule searchString="^Tms" replaceString="" />-->
+        <!--</table>-->
+        <table schema="TMS" tableName="SYS_USER">
             <!--移除生成的文件名的前缀-->
-            <domainObjectRenamingRule searchString="^Tms" replaceString="" />
+            <domainObjectRenamingRule searchString="^Sys" replaceString="" />
         </table>
     </context>
 </generatorConfiguration>
