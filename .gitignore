@@ -5,7 +5,7 @@ target/
 !**/src/test/**
 
 Log/
-Http/
+/http_test/
 
 ### STS ###
 .apt_generated
