@@ -234,6 +234,8 @@
                 <executions>
                     <execution>
                         <id>Generate MyBatis Artifacts</id>
+                        <!-- 避免install 和 package 时执行mybatis-generator-maven-plugin插件-->
+                        <phase>deploy</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
