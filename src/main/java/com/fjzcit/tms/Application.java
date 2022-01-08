@@ -7,6 +7,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import javax.annotation.PreDestroy;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * 另一种启动方式
@@ -17,14 +19,15 @@ public class Application {
 
     private static ConfigurableApplicationContext context;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException {
         // Application.context = SpringApplication.run(Application.class, args);
         SpringApplication app = new SpringApplication(Application.class);
         Environment env = app.run(args).getEnvironment();
         System.out.println("启动成功！！！");
-        System.out.println("接口服务地址: \thttp://localhost:" + env.getProperty("server.port"));
-        System.out.println("测试地址: \t\thttp://localhost:" + env.getProperty("server.port") + "/test");
-        System.out.println("Swagger UI：\thttp://localhost:" + env.getProperty("server.port") + "/swagger-ui.html#/");
+        InetAddress addr = InetAddress.getLocalHost();
+        System.out.println("接口服务地址: \thttp://" + addr.getHostAddress() + ":" + env.getProperty("server.port"));
+        System.out.println("测试地址: \t\thttp://" + addr.getHostAddress() + ":" + env.getProperty("server.port") + "/test");
+        System.out.println("Swagger UI：\thttp://" + addr.getHostAddress() + ":" + env.getProperty("server.port") + "/swagger-ui.html#/");
     }
 
     @PreDestroy
